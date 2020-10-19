@@ -15,12 +15,15 @@
         private MulticastSocket m;
         private BufferedReader stdIn;
         private MulticastSocket socketEnvoi;
+        private String nickname;
+    
 
 
-        envoyerUDP(InetAddress groupAdress, int groupPort) {
+        envoyerUDP(InetAddress groupAdress, int groupPort, String nom) {
             
             this.groupPort=groupPort;
             this.groupAdress=groupAdress;
+            this.nickname = nom;
             
             
         
@@ -36,12 +39,13 @@
                     stdIn = new BufferedReader(new InputStreamReader(System.in));
                     while(true)
                     {
-                        msg = stdIn.readLine();
+                        msg= nickname + " :";
+                        msg += stdIn.readLine();
                         DatagramPacket pac = new DatagramPacket(msg.getBytes(),
                         msg.length(), groupAdress, groupPort);
                         
                         if (!msg.isEmpty()) {
-                            System.out.println("Message envoyé : " +msg);
+                            System.out.println("Message envoyé par "+ nickname+": " +msg);
                             socketEnvoi.send(pac);
                         }
                     }

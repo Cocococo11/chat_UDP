@@ -13,12 +13,14 @@
         private static int groupPort ;
         private InetAddress groupAdress ;
         private MulticastSocket m;
+        private String nickname;
 
 
-        EcouteUDP(InetAddress groupAdress, int groupPort) {
+        EcouteUDP(InetAddress groupAdress, int groupPort, String nom) {
             
             this.groupPort=groupPort;
             this.groupAdress=groupAdress;
+            this.nickname=nom;
             
         
         }
@@ -27,14 +29,15 @@
             try {
                 MulticastSocket m = new MulticastSocket(groupPort);
                 m.joinGroup(groupAdress);
+                System.out.println("En attente d'un message venant des participants...");
                 while (true) {
                     byte[] buff = new byte[1000];
                     DatagramPacket rec = new DatagramPacket(buff, buff.length);
-                    System.out.println("En attente d'un message venant des participants...");
+                    
                     m.receive(rec);
                     String line = new String(rec.getData(),0, rec.getLength());
                     if (!line.isEmpty()) {
-                        System.out.println("Message recu : " +line);
+                        System.out.println(line);
                         
                     }
                 }
