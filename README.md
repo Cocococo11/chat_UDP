@@ -20,7 +20,7 @@ javac -d bin src/*/*/*.java
 ```
 and run:
 ```
-java -classpath classes udp.server.UDPMain <UDP_Multicast_Ip_address(224.1.1.1 for example)> <port_number> <username>
+java -classpath classes stream.UDPMain <UDP_Multicast_Ip_address(224.1.1.1 for example)> <port_number> <username>
 ```
 
 
