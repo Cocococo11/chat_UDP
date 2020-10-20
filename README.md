@@ -16,7 +16,7 @@ Java 11
 ## Installation
 Compile:
 ```
-javac -d bin src/*/*/*.java
+javac -d bin src/*/*.java
 ```
 and run:
 ```
