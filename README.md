@@ -24,7 +24,7 @@ java -classpath classes stream.UDPMain <UDP_Multicast_Ip_address(224.1.1.1 for e
 ```
 
 
-## Feature / Services
+## Features / Services
 The UDP Multicast server allows you to join a group and exchange messages with other participants
 
 
